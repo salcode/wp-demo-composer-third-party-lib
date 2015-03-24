@@ -27,6 +27,7 @@ function fe_composer_third_party_output_disk_space( $content ) {
 
 	if ( '' === $disk_space_in_bytes ) { return; }
 
+	// the class ByteUnits\Binary is available because we've loaded it via Composer
 	// convert the bytes to GiB with 2 decimal places
 	$disk_space_in_gigabtyes = ByteUnits\Binary::bytes( $disk_space_in_bytes )->format('GiB/2');
 
