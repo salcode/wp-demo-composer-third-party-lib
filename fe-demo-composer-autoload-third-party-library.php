@@ -20,12 +20,7 @@ add_filter( 'the_content', 'fe_composer_third_party_output_disk_space', 15 );
 function fe_composer_third_party_output_disk_space( $content ) {
 	global $post;
 
-	// we're using a hardcoded value for simplicity
-	// in an actual plugin, this might come from get_post_meta()
-	// or another function call
-	$disk_space_in_bytes = '1123581322';
-
-	if ( '' === $disk_space_in_bytes ) { return; }
+	$disk_space_in_bytes = disk_free_space('/');
 
 	// the class ByteUnits\Binary is available because we've loaded it via Composer
 	// convert the bytes to GiB with 2 decimal places
