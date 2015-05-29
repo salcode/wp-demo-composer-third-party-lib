@@ -27,7 +27,13 @@ function fe_composer_third_party_output_disk_space( $content ) {
 	$disk_space_in_gigabtyes = ByteUnits\Binary::bytes( $disk_space_in_bytes )->format('GiB/2');
 
 	$pre_content = '<div class="alert alert-info">';
-	$pre_content .= "Bytes: {$disk_space_in_bytes} (approximately {$disk_space_in_gigabtyes})";
+
+		$pre_content .= "Bytes: {$disk_space_in_bytes}";
+
+		if ( isset( $disk_space_in_gigabtyes ) ) {
+			$pre_content .= " (approximately {$disk_space_in_gigabtyes})";
+		}
+
 	$pre_content .= '</div>';
 
 	return $pre_content . $content;
